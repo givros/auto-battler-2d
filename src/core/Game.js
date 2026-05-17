@@ -45,8 +45,8 @@
       document.getElementById("coin-icon").src = this.assets.icons.coin;
       document.getElementById("xp-icon").src = this.assets.icons.xp;
       this.hud = new AB.HUD(this);
-      this.traitPanel = new AB.TraitPanel(document.getElementById("trait-list"), this.assets);
-      this.healthPanel = new AB.HealthPanel();
+      this.traitPanel = null;
+      this.healthPanel = null;
       this.shopUi = new AB.ShopUI(document.getElementById("shop-list"), this, this.tooltip);
       this.benchUi = new AB.BenchUI(document.getElementById("bench-list"), this, this.tooltip);
       this.boardUi = new AB.BoardUI(document.getElementById("board-canvas"), this, this.tooltip);
@@ -118,8 +118,13 @@
     refreshUI() {
       this.shopUi.render(this.player.shop.cards);
       this.benchUi.render(this.player.bench);
-      this.traitPanel.render(this.traits.getDisplayRows(this.player.boardUnits));
-      this.healthPanel.render(this.player, this.ai, this.history);
+      if (this.traitPanel) {
+        this.traitPanel.render(this.traits.getDisplayRows(this.player.boardUnits));
+      }
+    
+      if (this.healthPanel) {
+        this.healthPanel.render(this.player, this.ai, this.history);
+      }
       this.hud.render();
       this.updateTraitFeedback();
     }

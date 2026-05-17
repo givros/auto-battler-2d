@@ -53,7 +53,14 @@ button {
   min-height: 0;
   padding: max(4px, env(safe-area-inset-top)) max(4px, env(safe-area-inset-right)) max(4px, env(safe-area-inset-bottom)) max(4px, env(safe-area-inset-left));
 }
-
+#trait-list,
+#player-hp-bar,
+#ai-hp-bar,
+#player-hp-value,
+#ai-hp-value,
+#round-history {
+  display: none;
+}
 .top-bar {
   grid-column: 1 / -1;
   grid-row: 1;
